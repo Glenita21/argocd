@@ -1,29 +1,19 @@
-db:
-  name: wp-database
+backend:
+  name: backend
   labels:
-    app: db
+    app: backend
     env: dev
-    stack: wordpress
+    stack: chatapp
   image:
-    repository: msalim22/wpdb
-    tag: v1
+    repository: glenitashareen/backend
+    tag: latest
     pullPolicy: Always
-  replicas: 1
+  replicas: 3
   configmap:
     ## KEY: "value"
-    MYSQL_DATABASE: wordpress
-    MYSQL_USER: wordpress
-    APP_ENV: dev
+    MYSQL_HOST: mysql-service  # Using MYSQL_HOST as in the backend code
+    MYSQL_DATABASE: chatdb     # Using MYSQL_DATABASE as in the backend code
+    MYSQL_USER: user           # Using MYSQL_USER as in the backend code
+    APP_ENV: dev               # Using APP_ENV as in the backend code
   containerPorts:
-      mysql: 3306
-  # volume:
-  #     name: nginx-proxy-cache-store
-  #     mount:
-  #         path: /var/lib/mysql
-  #         name: nginx-proxy-cache-store
-  #     storage: 1T
-  #     nfs:
-  #         path: /shared_volume
-  #         server: dev-cache-filestore.internal.gdev.postmedia.digital
-  #     claim:
-  #         name: nginx-proxy-cache-store-claim
+      backendPort: 4000

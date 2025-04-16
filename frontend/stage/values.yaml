@@ -1,19 +1,16 @@
-wp:
-  name: wpapp
+frontend:
+  name: frontend-app
   labels:
-    app: wp
-    env: stage
-    stack: wordpress
+    app: frontend
+    env: dev
+    stack: chatapp
   image:
-    repository: msalim22/wp
-    tag: v2
+    repository: glenitashareen/frontend
+    tag: latest
     pullPolicy: Always
   replicas: 3
   configmap:
     ## KEY: "value"
-    APP_ENV: "stage"
-    WORDPRESS_DB_HOST: "wp-database.wpdb.svc.cluster.local"
-    WORDPRESS_DB_NAME: "wordpress"
-    WORDPRESS_DB_USER: "wordpress"
+    BACKEND_URL: "http://backend-service.backend.svc.cluster.local:4000"
   containerPorts:
       http: 80
