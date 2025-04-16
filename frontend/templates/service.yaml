@@ -6,7 +6,7 @@ metadata:
 {{- toYaml .Values.frontend.labels | nindent 4 }}
 spec:
   ports:
-  - port: 80            # the port on which the service is listening
+  - port: 80          # the port on which the service is listening
     protocol: TCP
     targetPort: {{ .Values.frontend.containerPorts.http }}      # the port exposed by Pod (we defined in the deployment as part of `containerPort)
   type: NodePort
