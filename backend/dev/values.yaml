@@ -1,0 +1,19 @@
+backend:
+  name: backend
+  labels:
+    app: backend
+    env: dev
+    stack: chatapp
+  image:
+    repository: glenitashareen/backend
+    tag: latest
+    pullPolicy: Always
+  replicas: 3
+  configmap:
+    ## KEY: "value"
+    MYSQL_HOST: mysql-service  # Using MYSQL_HOST as in the backend code
+    MYSQL_DATABASE: chatdb     # Using MYSQL_DATABASE as in the backend code
+    MYSQL_USER: user           # Using MYSQL_USER as in the backend code
+    APP_ENV: dev               # Using APP_ENV as in the backend code
+  containerPorts:
+      backendPort: 4000

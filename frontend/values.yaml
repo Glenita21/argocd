@@ -1,0 +1,27 @@
+frontend:
+  name: frontend-app
+  labels:
+    app: frontend
+    env: dev
+    stack: chatapp
+  image:
+    repository: glenitashareen/frontend
+    tag: latest
+    pullPolicy: Always
+  replicas: 3
+  rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 1
+  resources:
+    requests:
+      cpu: "150m"
+      memory: "128Mi"
+    limits:
+      cpu: "250m"
+      memory: "256Mi"
+  configmap:
+    ## KEY: "value"
+    BACKEND_URL: "http://backend-service.backend.svc.cluster.local:4000"
+  containerPorts:
+      http: 80
+
