@@ -33,7 +33,6 @@ dev/secrets.yaml
 chart.yaml
 ```
 ## Deploy app
-```
 Go to frontend folder and execute:
 ```
 helm install frontend-app -n frontend . -f dev/values.yaml -f dev/secrets.yaml
