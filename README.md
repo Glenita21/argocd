@@ -13,8 +13,9 @@
 
 To install Helm on Windows, use the following command:
 
-```bash
+```
 choco install kubernetes-helm
+
 
 ## Create helm charts
 
@@ -22,7 +23,7 @@ choco install kubernetes-helm
 helm create frontend
 helm create backend
 
-```
+
 ## Yaml files created
 
 ```
@@ -34,8 +35,6 @@ dev/values.yaml
 dev/secrets.yaml
 chart.yaml
 
-```
-
 ## Deploy app
 
 Go to frontend folder and execute:
@@ -43,13 +42,11 @@ Go to frontend folder and execute:
 ```
 helm install frontend-app -n frontend . -f dev/values.yaml -f dev/secrets.yaml
 
-```
 Go to backend folder and execute:
 
 ```
 helm install backend-app -n backend . -f dev/values.yaml -f dev/secrets.yaml
 
-```
 
 ## To uninstall
 
@@ -57,5 +54,3 @@ helm install backend-app -n backend . -f dev/values.yaml -f dev/secrets.yaml
 
 helm uninstall wordpress-db -n wpdb
 helm uninstall wordpress-app -n wpapp
-
-```
